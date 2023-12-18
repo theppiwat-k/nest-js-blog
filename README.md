@@ -68,6 +68,37 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 - Website - [https://nestjs.com](https://nestjs.com/)
 - Twitter - [@nestframework](https://twitter.com/nestframework)
 
+## Migration script
+
+"typeorm": "npm run build && npx typeorm -d dist/db/typeorm.js",
+"migration:generate": "npm run typeorm -- migration:generate",
+"migration:run": "npm run typeorm -- migration:run",
+"migration:revert": "npm run typeorm -- migration:revert"
+
+## Migration description script
+
+- "typeorm": "npm run build && npx typeorm -d dist/db/typeorm.js":
+  This script building your project using npm run build and then running TypeORM with database source that relate with db/typeorm file
+- "migration:generate": "npm run typeorm -- migration:generate":
+  This script appears to be for generating migrations. It uses npm run typeorm before executing the migration generation command.
+- "migration:run": "npm run typeorm -- migration:run":
+  This script likely runs your migrations using TypeORM.
+- "migration:revert": "npm run typeorm -- migration:revert":
+  This script seems to revert the latest applied migration.
+
+## Migration example using
+
+```bash
+# generate migration file
+npm run migration:generate -- db/migrations/NewMigration
+
+# run migration file with 'up'
+npm run migration:run
+
+# revert migration file with 'down'
+npm run migration:revert
+```
+
 ## License
 
 Nest is [MIT licensed](LICENSE).
